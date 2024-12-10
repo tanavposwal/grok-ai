@@ -3,29 +3,36 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useChat } from "ai/react";
+import { Bot, User } from "lucide-react";
 
 export default function Page() {
   const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
     useChat({});
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      <h1 className="text-center text-4xl font-bold">Brutal Grok AI</h1>
-      <div className="h-96 overflow-y-auto">
+    <div className="flex flex-col gap-4 p-4 h-full">
+      <h1 className="text-4xl font-bold">Highly Brutal AI</h1>
+      <div className="h-full overflow-y-auto space-y-2">
         {messages.map((message) => (
           <div key={message.id} className="flex gap-2">
-            <p className="text-primary font-bold">
-              {message.role === "user" ? "User:" : "AI:"}
-            </p>
-            <p className="text-primary">{message.content}</p>
+            <div className="flex p-2 rounded-full bg-fuchsia-600 h-fit">
+              {message.role === "user" ? (
+                <User className="h-5 w-5 text-primary-foreground" />
+              ) : (
+                <Bot className="h-5 w-5 text-primary-foreground" />
+              )}
+            </div>
+            <p className="text-primary/90 text-lg">{message.content}</p>
           </div>
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="flex w-full gap-2">
+      <form onSubmit={handleSubmit} className="flex w-full gap-2 border-t pt-4">
         <Input
           name="prompt"
           value={input}
+          placeholder="Ask me anything..."
+          autoComplete="off"
           onChange={handleInputChange}
           disabled={isLoading}
         />
