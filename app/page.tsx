@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { UserButton } from "@clerk/nextjs";
 import { useChat } from "ai/react";
 import { Bot, User } from "lucide-react";
 
@@ -11,7 +12,11 @@ export default function Page() {
 
   return (
     <div className="flex flex-col gap-4 p-4 h-full">
+      <div className="flex gap-4 items-end justify-between">
       <h1 className="text-4xl font-bold">Highly Brutal AI</h1>
+      <a href="https://x.com/tanavindev" className="text-xl text-primary/50 hover:text-primary/90 transition-colors" target="_blank" rel="noreferrer">𝕏</a>
+      <UserButton />
+      </div>
       <div className="h-full overflow-y-auto space-y-2">
         {messages.map((message) => (
           <div key={message.id} className="flex gap-2">
