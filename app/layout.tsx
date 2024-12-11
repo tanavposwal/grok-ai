@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ClerkProvider, SignIn, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { ClerkProvider, SignIn, SignedIn, SignedOut } from "@clerk/nextjs";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
   weight: "100 900",
 });
 
@@ -32,12 +27,12 @@ export default function RootLayout({
         >
           <SignedOut>
             <h1 className="text-4xl font-bold mb-2">Highly Brutal AI</h1>
-            <p className="text-lg mb-3 text-primary/70">A simple chatbot powered by Grok AI</p>
-          <SignIn />
+            <p className="text-lg mb-3 text-primary/70">
+              A simple chatbot powered by Grok AI
+            </p>
+            <SignIn />
           </SignedOut>
-          <SignedIn>
-          {children}
-          </SignedIn>
+          <SignedIn>{children}</SignedIn>
         </body>
       </html>
     </ClerkProvider>

@@ -7,7 +7,7 @@ import { useChat } from "ai/react";
 import { Bot, User } from "lucide-react";
 
 export default function Page() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading, stop } =
+  const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat({});
 
   return (
